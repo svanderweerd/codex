@@ -47,7 +47,7 @@ jobs:
 
       - name: Make the site
         # run: poetry run mkdocs build --strict
-        run: mkdocs gh-deploy --force --clean --verbose
+        run: poetry run mkdocs gh-deploy --force --clean --verbose
 
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -55,9 +55,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./site
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        if: ${{ github.ref == 'refs/heads/main' }}
+#        with:
+#          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+#          publish_dir: ./site
