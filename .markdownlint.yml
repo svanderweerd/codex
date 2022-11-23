@@ -14,7 +14,8 @@ MD007:
   indent: 4
 
 # MD013/line-length - Line length
-MD013: false
+MD013:
+  line_length: 120
 
 # MD025/single-title/single-h1 - Multiple top-level headings
 # in the same document

@@ -48,38 +48,38 @@ do this automatically through Github Actions.
 
 ```yaml
 ---
- name: CI
+name: CI
 
- on:
-   push:
-     branches: [ "main" ]
-   pull_request:
-     branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-   # Allows you to run this workflow manually from the Actions tab
-   workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
- jobs:
-   build:
-     runs-on: ubuntu-latest
-     steps:
-       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-       - uses: actions/checkout@v3
-         with:
-           fetch-depth: 0
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-       - name: Set up python
-         uses: actions/setup-python@v4
-         with:
-           python-version: '3.10'
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-       - name: Install dependencies
-         run: |
-           python3 -m pip install --upgrade pip
-           python3 -m pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
 
-       - name: Build site
-         run: mkdocs gh-deploy --force --clean --verbose
+      - name: Build site
+        run: mkdocs gh-deploy --force --clean --verbose
 ```
 
 * Change the file name to `gh-pages.yml` and make sure to commit this change to the default branch.
@@ -165,7 +165,7 @@ jobs:
 
       - name: Make the site
         run: poetry run mkdocs build --verbose
-#       run: poetry run mkdocs gh-deploy --force --clean --verbose
+      #       run: poetry run mkdocs gh-deploy --force --clean --verbose
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -206,12 +206,12 @@ ssh-keygen -t ed25519 -C "$(git config user.email)" -f [ProjectName] -N ""
 * Go to your Github project settings > deploy keys and click on `add deploy key`
     * title = _Public key of ACTIONS_DEPLOY_KEY_
     * paste the contents of your `[ProjectName].pub` file into this field. This is your public key that you just
-    generated.
+      generated.
 * Go to Github project settings > Secrets > Actions and click on `new repository secret`
     * secret name = _ACTIONS_DEPLOY_KEY_ > you set this as title, since you refer to this variable name in your
-    `gh-pages.yml` file (`deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}`)
+      `gh-pages.yml` file (`deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}`)
     * paste the contents of your `[ProjectName]` file in the `.ssh` folder. This is the private key that you just
-    generated.
+      generated.
 * Now you are all set.
 
 Now you can push your changes to your Github default branch. If there are no unexpected issues, Github will
