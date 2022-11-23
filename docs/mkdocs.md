@@ -1,40 +1,22 @@
-# Welcome to MkDocs
+# Getting started with MkDocs
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## plugins used
-
-To setup my digital garden, I use the following mkdocs plugins:
-
-* [search](https://www.mkdocs.org/user-guide/configuration/#plugins): built-in MkDocs search plugin.
-* If you use the `Material` theme, use [search - Material](https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/) instead of the built-in plugin
-* [minify](https://github.com/byrnereese/mkdocs-minify-plugin): minify HTMLS, JS, CSS files prior to being written to disk
-
-# Integrating with Github Pages
-
-If you want to have your documentation hosted on Github pages, you need to do the following steps in order to make 
-it work:
+This page explains how to use MkDocs and host it on Github Pages.
 
 ## Create mkdocs site
 
 * `pip3 install mkdocs` installs the mkdocs package to generate python based static sites.
 * `mkdocs new [site-name]` creates a new project with the correct set-up.
-* `mkdocs build` subsequently generates your static pages and places the files in `/sites`. Make sure to include 
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` subsequently generates your static pages and places the files in `/sites`. Make sure to include
   this in your `.gitignore` file.
 
 ## Setting up a Python environment
-Here we explain how to set up a virtual environment using `pyenv` and use `requirements.txt` to keep track of our 
-dependencies. Instead of using `pyenv` you can also directly start with Poetry. Further down this guide we explain 
-the steps regarding a Poetry set up.   
 
-* setup a python environment (`pyenv virtualenv [environmentName]`) and activate it with `pyenv activate 
+Here we explain how to set up a virtual environment using `pyenv` and use `requirements.txt` to keep track of our
+dependencies. Instead of using `pyenv` you can also directly start with Poetry. Further down this guide we explain
+the steps regarding a Poetry set up.
+
+* setup a python environment (`pyenv virtualenv [environmentName]`) and activate it with `pyenv activate
   [environmentName]`.
 * Install packages and plugins accordingly.
 * Run `pip freeze > requirements.txt` to output your deps into `requirements.txt`.
@@ -45,23 +27,23 @@ the steps regarding a Poetry set up.
 * Create a new repository in Github (empty one).
 * Perform `git init` in your local mkdocs folder (the root folder that stores the `mkdocs.yml` file).
 * The usual stuff (git add, git commit, git remote add origin [remote-url] and git push -u origin main).
-* Now you need to perform the `mkdocs gh-deploy` command in your local mkdocs project. This creates a Git branch 
+* Now you need to perform the `mkdocs gh-deploy` command in your local mkdocs project. This creates a Git branch
   names `gh-pages` for Github Pages to pick up your site.
-* Running this command will generate the static website. Rather than outputting the files in the site folder as we 
-  saw in the previous post, the website will be saved in a new branch named gh-pages and a push of this branch is 
-  done towards GitHub. If you go to the Actions tab on the GitHub repository, you will see GitHub automatically 
+* Running this command will generate the static website. Rather than outputting the files in the site folder as we
+  saw in the previous post, the website will be saved in a new branch named gh-pages and a push of this branch is
+  done towards GitHub. If you go to the Actions tab on the GitHub repository, you will see GitHub automatically
   picking up the new gh-pages branch and deploying it to GitHub pages.
 * Now your site is hosted on github pages accordingly. Everything has been setup!
 
 ## Automated deployments
 
-So far I have described how to manually deploy your mkdocs site to Github Pages. The next steps explain how you can 
+So far I have described how to manually deploy your mkdocs site to Github Pages. The next steps explain how you can
 do this automatically through Github Actions.
 
-* Go to your Github repo and then to Actions menu. Click on `New workflow` and select the suggested workflow (simple 
-  workflow). This will generate a new file called `blank.yml` in the `.github/workflows` directory. See the example 
+* Go to your Github repo and then to Actions menu. Click on `New workflow` and select the suggested workflow (simple
+  workflow). This will generate a new file called `blank.yml` in the `.github/workflows` directory. See the example
   below for the changes that we conducted on the template file. I suggest to copy this over.
-* Please be mindful of your default branch's name! If you have `master`, make sure to reflect that in the yaml file 
+* Please be mindful of your default branch's name! If you have `master`, make sure to reflect that in the yaml file
   below as well.
 
 ```yaml
@@ -101,12 +83,12 @@ do this automatically through Github Actions.
 ```
 
 * Change the file name to `gh-pages.yml` and make sure to commit this change to the default branch.
-* Remember that the gh-pages branch will be generated by MkDocs, and we never want to either check out this branch 
+* Remember that the gh-pages branch will be generated by MkDocs, and we never want to either check out this branch
   locally or modify it manually.
 * Now you have a minimal set-up for deploying your site through Github Actions automatically.
 
-The next steps refines our Github Workflow approach. These steps are not really needed if you don't want to. You can 
-continue using pip3 with pyenv (or venv) for dependency and environment management, instead of poetry. You may also 
+The next steps refines our Github Workflow approach. These steps are not really needed if you don't want to. You can
+continue using pip3 with pyenv (or venv) for dependency and environment management, instead of poetry. You may also
 decide to add a `Deploy` job without integrating with Poetry all together. You simply change the `yml` file as follows:
 
 ```yaml
@@ -126,11 +108,11 @@ decide to add a `Deploy` job without integrating with Poetry all together. You s
 
 ## Refining Github Workflow
 
-* After our first deployment, we do a `git fetch` and `git pull` in our local project. This will update our 
-  local folder and adds the newly created contents inside the `.github` directory. 
+* After our first deployment, we do a `git fetch` and `git pull` in our local project. This will update our
+  local folder and adds the newly created contents inside the `.github` directory.
 * Before we use Poetry locally, we first need to make sure that we even have a Poetry environment and `pyproject.
-  toml` file in our root directory. We run `poetry init`, and install the dependencies that are listed in our 
-  `requirements.txt` file. 
+  toml` file in our root directory. We run `poetry init`, and install the dependencies that are listed in our
+  `requirements.txt` file.
 * Now we tweak the `gh-pages.yml` file as follows:
 
 ```yaml
@@ -196,43 +178,42 @@ jobs:
 As shown above, we add a couple of jobs that take care of installing Poetry and our project dependencies. We also  
 replace our `run` command in the `Make the site` job: we add poetry but also replace `gh-deploy` with `build`.
 
-Again, you may choose to keep `poetry run mkdocs gh-deploy`. Doing so, renders the job `Deploy` redundant. I suggest 
-to remove that job accordingly. Since we are newly introducing Poetry to our pipeline, it might be good to first 
-test if this is integrated correctly, and we don't experience any issues. If everything is fine, we can work on the 
+Again, you may choose to keep `poetry run mkdocs gh-deploy`. Doing so, renders the job `Deploy` redundant. I suggest
+to remove that job accordingly. Since we are newly introducing Poetry to our pipeline, it might be good to first
+test if this is integrated correctly, and we don't experience any issues. If everything is fine, we can work on the
 next step.  
 
 ### Deploy job
 
-Now that we don't use the `gh-deploy` functionality provided by `MkDocs`, we need to add another job that takes care 
-of pushing our site to the `gh-pages` branch. That's where the `Deploy` job comes in. You'll notice the following 
+Now that we don't use the `gh-deploy` functionality provided by `MkDocs`, we need to add another job that takes care
+of pushing our site to the `gh-pages` branch. That's where the `Deploy` job comes in. You'll notice the following
 parameter: `deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}`.
 
-Because we don't make use of the `gh-deploy` functionality, we need to make use of _Github Runners_: agents that are 
-used to deploy code to certain environments. In our case, it is the `gh-pages` environment (i.e., branch). However, 
-we need to properly authenticate the Runner otherwise it will not be able to perform write operations, thus 
-deploying our site. To ensure that the Runner is able to authenticate, we make use of _deploy keys_ and add them to 
+Because we don't make use of the `gh-deploy` functionality, we need to make use of _Github Runners_: agents that are
+used to deploy code to certain environments. In our case, it is the `gh-pages` environment (i.e., branch). However,
+we need to properly authenticate the Runner otherwise it will not be able to perform write operations, thus
+deploying our site. To ensure that the Runner is able to authenticate, we make use of _deploy keys_ and add them to
 our Github project. See the steps below for doing this:
 
-* on your device, go to `.ssh` directory and run `ssh-keygen -t ed25519 -C "$(git config user.email)" -f 
+* on your device, go to `.ssh` directory and run `ssh-keygen -t ed25519 -C "$(git config user.email)" -f
   [ProjectName]
-  -N ""`. The `[name]` is the name that is used to write the public and private key files. I suggest to use the name 
+  -N ""`. The `[name]` is the name that is used to write the public and private key files. I suggest to use the name
   of your project. This command generates a private and public key using the ed25519 algorithm.
 * Go to your Github project settings > deploy keys and click on `add deploy key`
-  * title = _Public key of ACTIONS_DEPLOY_KEY_
-  * paste the contents of your `[ProjectName].pub` file into this field. This is your public key that you just 
+    * title = _Public key of ACTIONS_DEPLOY_KEY_
+    * paste the contents of your `[ProjectName].pub` file into this field. This is your public key that you just
     generated.
 * Go to Github project settings > Secrets > Actions and click on `new repository secret`
-  * secret name = _ACTIONS_DEPLOY_KEY_ > you set this as title, since you refer to this variable name in your 
+    * secret name = _ACTIONS_DEPLOY_KEY_ > you set this as title, since you refer to this variable name in your
     `gh-pages.yml` file (`deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}`)
-  * paste the contents of your `[ProjectName]` file in the `.ssh` folder. This is the private key that you just 
+    * paste the contents of your `[ProjectName]` file in the `.ssh` folder. This is the private key that you just
     generated.
 * Now you are all set.
 
-Now you can push your changes to your Github default branch. If there are no unexpected issues, Github will 
+Now you can push your changes to your Github default branch. If there are no unexpected issues, Github will
 automatically deploy your changes to the Github Pages site, based on your workflow.
 
-
-# References
+## References
 
 See the links below for guides and other docs that helped me understand Mkdocs and deploying to Github Pages:
 
