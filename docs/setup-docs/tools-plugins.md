@@ -1,4 +1,4 @@
-# Tools & Plugins
+# Tools
 
 ## markdownlint-cli
 
@@ -59,7 +59,8 @@ MD046: false
 
 ## pre-commit
 
-[pre-commit](https://pre-commit.com) helps you implement checks before committing code. You install it through pip or poetry: `poetry add
+[pre-commit](https://pre-commit.com) helps you implement checks before committing code. You install it through pip or
+poetry: `poetry add
 pre-commit`. Subsequently, you create a `.pre-commit-config.yml` file where you include the checks that must be
 performed.
 
@@ -77,3 +78,43 @@ Manually trigger a pre-commit check:
 ```bash
 pre-commit run --all-files
 ```
+
+# plugins
+
+There are alot of plugins that you can use when building a doc site with Mkdocs and Material theme. Some of them are
+listed below.
+
+## markdown_extensions
+
+### admonitions
+
+[Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/), also known as call-outs, are an
+excellent choice for including side content without significantly
+interrupting the document flow. Material for MkDocs provides several types of admonitions and allows for the
+inclusion and nesting of arbitrary content.
+
+To enable this extension, add the following to `mkdocs.yml`:
+
+```yaml
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+```
+
+Admonitions follow a simple syntax: a block starts with !!!, followed by a single keyword used as a type qualifier.
+The content of the block follows on the next line, indented by four spaces:
+
+!!! note
+This is a dummy block of type 'note'.
+
+!!! note "Custom title"
+This is a dummy block of type 'note' with a custom title.
+
+??? info
+This is a collapsable dummy block of type 'info'.
+
+!!! bug
+This is a dummy block of type 'bug'.
+
+You can do all kinds of stuff with this extension. Check the url above for all the variation you can use.
