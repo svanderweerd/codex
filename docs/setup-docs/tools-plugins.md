@@ -1,15 +1,10 @@
-# Managing your code
+# Tools & Plugins
 
-There are different code management tools that will help you write code in a consistent style, catch bugs and errors,
-and increase the quality of your code. I will list a couple of the tools that I am familiar with.
-
-## linting
-
-### markdownlint-cli
+## markdownlint-cli
 
 When you have a project with markdown (`.md`) files, or when building documentation sites based on markdown files (e.
-g., with Mkdocs), you can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to catch bugs or
-issues in your documentation.
+g., with Mkdocs), you can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to improve your 
+markdown code.
 
 Install with homebrew:
 
@@ -22,7 +17,7 @@ yml` or `.markdownlint.jsonc` file in your project's root. In this file you can 
 file](https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml) for an example. This file also
 explains the rules and their behaviour.
 
-#### template
+### template
 
 I use the following `.markdownlint.yml` template:
 

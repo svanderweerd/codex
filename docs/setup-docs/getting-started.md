@@ -1,4 +1,4 @@
-# Getting started with MkDocs
+# Getting started with Mkdocs
 
 This page explains how to use MkDocs and host it on Github Pages.
 
