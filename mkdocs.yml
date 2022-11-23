@@ -1,4 +1,4 @@
-site_name: Yggrasil - Steven's tree of knowledge
+site_name: Yggdrasil
 
 plugins:
   - search
@@ -34,3 +34,9 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+
+nav:
+  - Introduction: index.md
+  - Setup docs:
+      - Getting started: setup-docs/getting-started.md
+      - Tools & plugins: setup-docs/tools-plugins.md

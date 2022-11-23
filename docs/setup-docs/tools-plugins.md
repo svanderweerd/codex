@@ -1,15 +1,10 @@
-# Managing your code
+# Tools & Plugins
 
-There are different code management tools that will help you write code in a consistent style, catch bugs and errors,
-and increase the quality of your code. I will list a couple of the tools that I am familiar with.
-
-## linting
-
-### markdownlint-cli
+## markdownlint-cli
 
 When you have a project with markdown (`.md`) files, or when building documentation sites based on markdown files (e.
-g., with Mkdocs), you can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to catch bugs or
-issues in your documentation.
+g., with Mkdocs), you can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to improve your
+markdown code.
 
 Install with homebrew:
 
@@ -22,7 +17,7 @@ yml` or `.markdownlint.jsonc` file in your project's root. In this file you can 
 file](https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml) for an example. This file also
 explains the rules and their behaviour.
 
-#### template
+### template
 
 I use the following `.markdownlint.yml` template:
 
@@ -60,4 +55,25 @@ MD035:
 
 # MD046/code-block-style - Code block style
 MD046: false
+```
+
+## pre-commit
+
+pre-commit helps you implement checks before committing code. You install it through pip or poetry: `poetry add
+pre-commit`. Subsequently, you create a `.pre-commit-config.yml` file where you include the checks that must be
+performed.
+
+Set up the pre-commit hooks for your project:
+
+```bash
+pre-commit install
+```
+
+Now, every time you commit code, the pre-commit hook will check your code based on the checks included in your
+config file.
+
+Manually trigger a pre-commit check:
+
+```bash
+pre-commit run --all-files
 ```
