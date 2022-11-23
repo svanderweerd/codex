@@ -46,9 +46,8 @@ jobs:
         run: poetry install --no-interaction --no-root
 
       - name: Make the site
-         run: poetry run mkdocs build --verbose
-#        run: poetry run mkdocs gh-deploy --force --clean --verbose
-
+        run: poetry run mkdocs build --verbose
+#       run: poetry run mkdocs gh-deploy --force --clean --verbose
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
