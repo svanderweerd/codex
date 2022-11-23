@@ -56,3 +56,24 @@ MD035:
 # MD046/code-block-style - Code block style
 MD046: false
 ```
+
+## pre-commit
+
+pre-commit helps you implement checks before committing code. You install it through pip or poetry: `poetry add
+pre-commit`. Subsequently, you create a `.pre-commit-config.yml` file where you include the checks that must be
+performed.
+
+Set up the pre-commit hooks for your project:
+
+```bash
+pre-commit install
+```
+
+Now, every time you commit code, the pre-commit hook will check your code based on the checks included in your
+config file.
+
+Manually trigger a pre-commit check:
+
+```bash
+pre-commit run --all-files
+```
