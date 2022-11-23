@@ -3,7 +3,7 @@
 ## markdownlint-cli
 
 When you have a project with markdown (`.md`) files, or when building documentation sites based on markdown files (e.
-g., with Mkdocs), you can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to improve your 
+g., with Mkdocs), you can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to improve your
 markdown code.
 
 Install with homebrew:

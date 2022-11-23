@@ -33,7 +33,7 @@ the steps regarding a Poetry set up.
   saw in the previous post, the website will be saved in a new branch named gh-pages and a push of this branch is
   done towards GitHub. If you go to the Actions tab on the GitHub repository, you will see GitHub automatically
   picking up the new gh-pages branch and deploying it to GitHub pages.
-* Now your site is hosted on github pages accordingly. Everything has been setup!
+* Now your site is hosted on github pages accordingly. Everything has been set up!
 
 ## Automated deployments
 
@@ -71,13 +71,13 @@ do this automatically through Github Actions.
        - name: Set up python
          uses: actions/setup-python@v4
          with:
-           python-version: '3.10' 
+           python-version: '3.10'
 
        - name: Install dependencies
          run: |
            python3 -m pip install --upgrade pip
            python3 -m pip install -r requirements.txt
-           
+
        - name: Build site
          run: mkdocs gh-deploy --force --clean --verbose
 ```
@@ -140,7 +140,7 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10' 
+          python-version: '3.10'
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
@@ -175,13 +175,13 @@ jobs:
           publish_dir: ./site
 ```
 
-As shown above, we add a couple of jobs that take care of installing Poetry and our project dependencies. We also  
+As shown above, we add a couple of jobs that take care of installing Poetry and our project dependencies. We also
 replace our `run` command in the `Make the site` job: we add poetry but also replace `gh-deploy` with `build`.
 
 Again, you may choose to keep `poetry run mkdocs gh-deploy`. Doing so, renders the job `Deploy` redundant. I suggest
 to remove that job accordingly. Since we are newly introducing Poetry to our pipeline, it might be good to first
 test if this is integrated correctly, and we don't experience any issues. If everything is fine, we can work on the
-next step.  
+next step.
 
 ### Deploy job
 
@@ -195,10 +195,14 @@ we need to properly authenticate the Runner otherwise it will not be able to per
 deploying our site. To ensure that the Runner is able to authenticate, we make use of _deploy keys_ and add them to
 our Github project. See the steps below for doing this:
 
-* on your device, go to `.ssh` directory and run `ssh-keygen -t ed25519 -C "$(git config user.email)" -f
-  [ProjectName]
-  -N ""`. The `[name]` is the name that is used to write the public and private key files. I suggest to use the name
-  of your project. This command generates a private and public key using the ed25519 algorithm.
+* on your device, go to `.ssh` directory and run:
+
+```bash
+ssh-keygen -t ed25519 -C "$(git config user.email)" -f [ProjectName] -N ""
+```
+
+* The `[name]` is the name that is used to write the public and private key files. I suggest to use the name of your
+  project. This command generates a private and public key using the ed25519 algorithm.
 * Go to your Github project settings > deploy keys and click on `add deploy key`
     * title = _Public key of ACTIONS_DEPLOY_KEY_
     * paste the contents of your `[ProjectName].pub` file into this field. This is your public key that you just
