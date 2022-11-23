@@ -59,7 +59,7 @@ MD046: false
 
 ## pre-commit
 
-pre-commit helps you implement checks before committing code. You install it through pip or poetry: `poetry add
+[pre-commit](https://pre-commit.com) helps you implement checks before committing code. You install it through pip or poetry: `poetry add
 pre-commit`. Subsequently, you create a `.pre-commit-config.yml` file where you include the checks that must be
 performed.
 
