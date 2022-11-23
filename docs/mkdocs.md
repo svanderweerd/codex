@@ -17,7 +17,7 @@ To setup my digital garden, I use the following mkdocs plugins:
 * If you use the `Material` theme, use [search - Material](https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/) instead of the built-in plugin
 * [minify](https://github.com/byrnereese/mkdocs-minify-plugin): minify HTMLS, JS, CSS files prior to being written to disk
 
-# integrating with Github pages
+# Integrating with Github Pages
 
 If you want to have your documentation hosted on Github pages, you need to do the following steps in order to make 
 it work:
@@ -229,4 +229,13 @@ our Github project. See the steps below for doing this:
 * Now you are all set.
 
 Now you can push your changes to your Github default branch. If there are no unexpected issues, Github will 
-automatically deploy your changes to the Github Pages site, based on your workflow.  
+automatically deploy your changes to the Github Pages site, based on your workflow.
+
+
+# References
+
+See the links below for guides and other docs that helped me understand Mkdocs and deploying to Github Pages:
+
+* [Creating a documentation site with mkdocs](https://blog.elmah.io/creating-a-documentation-site-with-mkdocs/)
+* [Hosting a MkDocs-driven documentation site on GitHub Pages](https://blog.elmah.io/hosting-a-mkdocs-driven-documentation-site-on-github-pages/)
+* [Deploying a Mkdocs site with Github Actions](https://blog.elmah.io/deploying-a-mkdocs-documentation-site-with-github-actions/)
