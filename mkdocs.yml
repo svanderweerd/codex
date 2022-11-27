@@ -4,6 +4,7 @@ nav:
   - Introduction: index.md
   - Health:
       - Sleep: health/sleep.md
+      - Fitness: health/fitness.md
   - Setup docs:
       - Getting started: setup-docs/getting-started.md
       - Tools & plugins: setup-docs/tools-plugins.md
@@ -26,7 +27,7 @@ markdown_extensions:
   - meta
   - def_list
   - toc:
-      permalink: ⚑
+      permalink: true
       baselevel: 2
   - pymdownx.arithmatex
   - pymdownx.betterem:
