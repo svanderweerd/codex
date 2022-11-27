@@ -1,5 +1,13 @@
 site_name: Yggdrasil
 
+nav:
+  - Introduction: index.md
+  - Health:
+      - Sleep: health/sleep.md
+  - Setup docs:
+      - Getting started: setup-docs/getting-started.md
+      - Tools & plugins: setup-docs/tools-plugins.md
+
 plugins:
   - search
   - autolinks
@@ -8,6 +16,9 @@ plugins:
   - minify:
       minify_html: true
   - section-index
+  - encryptcontent:
+      title_prefix: '[lock] '
+      button_class: 'md-search__icon'
 
 markdown_extensions:
   - abbr
@@ -62,9 +73,3 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-
-nav:
-  - Introduction: index.md
-  - Setup docs:
-      - Getting started: setup-docs/getting-started.md
-      - Tools & plugins: setup-docs/tools-plugins.md
