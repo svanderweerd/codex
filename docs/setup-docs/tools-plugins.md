@@ -106,15 +106,15 @@ Admonitions follow a simple syntax: a block starts with !!!, followed by a singl
 The content of the block follows on the next line, indented by four spaces:
 
 !!! note
-This is a dummy block of type 'note'.
+    This is a dummy block of type 'note'.
 
 !!! note "Custom title"
-This is a dummy block of type 'note' with a custom title.
+    This is a dummy block of type 'note' with a custom title.
 
 ??? info
-This is a collapsable dummy block of type 'info'.
+    This is a collapsable dummy block of type 'info'.
 
 !!! bug
-This is a dummy block of type 'bug'.
+    This is a dummy block of type 'bug'.
 
 You can do all kinds of stuff with this extension. Check the url above for all the variation you can use.

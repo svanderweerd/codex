@@ -17,6 +17,7 @@ mkdocs-minify-plugin = "^0.6.1"
 pymdown-extensions = "^9.9"
 pre-commit = "^2.20.0"
 mkdocs-encryptcontent-plugin = "^2.4.1"
+proselint = "^0.13.0"
 
 
 [build-system]
