@@ -1,6 +1,10 @@
-# Intro
+---
+title: Fitness
+date: 20221127
+author: Steven
+---
 
-In this section I'll talk about my fitness journey and stuff I have come to learn throughout it.
+This is page is meant to document my thoughts on fitness and how to optimise your work outs alongside a full time job and other activities that you want to pursue.
 
 # Schemas
 
