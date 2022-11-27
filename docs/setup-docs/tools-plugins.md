@@ -79,7 +79,7 @@ Manually trigger a pre-commit check:
 pre-commit run --all-files
 ```
 
-# plugins
+# Plugins
 
 There are alot of plugins that you can use when building a doc site with Mkdocs and Material theme. Some of them are
 listed below.
