@@ -14,8 +14,8 @@ MD007:
   indent: 4
 
 # MD013/line-length - Line length
-MD013: false
-#  line_length: 120
+MD013:
+  line_length: 120
 
 # MD025/single-title/single-h1 - Multiple top-level headings
 # in the same document
@@ -29,6 +29,9 @@ MD030:
 # MD035/hr-style - Horizontal rule style
 MD035:
   style: ---
+
+# MD035/hr-style - First line should be top-level heading style
+MD041: False
 
 # MD046/code-block-style - Code block style
 MD046: false

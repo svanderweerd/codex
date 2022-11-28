@@ -5,9 +5,12 @@ nav:
   - Health:
       - Sleep: health/sleep.md
       - Fitness: health/fitness.md
-  - Setup docs:
-      - Getting started: setup-docs/getting-started.md
-      - Tools & plugins: setup-docs/tools-plugins.md
+  - Ops:
+      - ops/index.md
+      - Setup mkdocs:
+          - Getting started: ops/setup-docs/getting-started.md
+          - Tools & plugins: ops/setup-docs/tools-plugins.md
+      - Intellij IDEA: ops/intellij-idea.md
 
 plugins:
   - search
@@ -29,6 +32,7 @@ markdown_extensions:
   - toc:
       permalink: true
       baselevel: 2
+  - tables
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
