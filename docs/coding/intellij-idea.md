@@ -22,4 +22,3 @@ Unicode strings for apple symbols:
 | ⌥ + enter | Opens up _suggestions pane_ (yellow lightbulb) options for the code where you caret is |
 | ⌘ + 1     | Go to `Project` sidebar                                                                |
 | ⌥ + f12   | Go to terminal                                                                         |
-|           |                                                                                        |

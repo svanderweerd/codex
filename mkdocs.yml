@@ -5,12 +5,16 @@ nav:
   - Health:
       - Sleep: health/sleep.md
       - Fitness: health/fitness.md
-  - Ops:
-      - ops/index.md
+  - DevOps:
+      - devops/index.md
       - Setup mkdocs:
           - Getting started: ops/setup-docs/getting-started.md
           - Tools & plugins: ops/setup-docs/tools-plugins.md
-      - Intellij IDEA: ops/intellij-idea.md
+  - Coding:
+      - Intellij IDEA: coding/intellij-idea.md
+      - Python:
+          - coding/python/index.md
+          - Data structures: coding/python/data-structures.md
 
 plugins:
   - search
@@ -27,6 +31,7 @@ plugins:
 markdown_extensions:
   - abbr
   - admonition
+  - attr_list
   - meta
   - def_list
   - toc:
@@ -40,7 +45,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: '!!python/name:pymdownx.emoji.to_svg'
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
