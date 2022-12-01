@@ -8,8 +8,8 @@ nav:
   - DevOps:
       - devops/index.md
       - Setup mkdocs:
-          - Getting started: ops/setup-docs/getting-started.md
-          - Tools & plugins: ops/setup-docs/tools-plugins.md
+          - Getting started: devops/setup-docs/getting-started.md
+          - Tools & plugins: devops/setup-docs/tools-plugins.md
   - Coding:
       - Architecture:
           - Repository pattern: coding/architecture/repository-pattern.md
