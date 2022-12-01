@@ -11,9 +11,14 @@ nav:
           - Getting started: ops/setup-docs/getting-started.md
           - Tools & plugins: ops/setup-docs/tools-plugins.md
   - Coding:
+      - Architecture:
+          - Repository pattern: coding/architecture/repository-pattern.md
+          - Domain Driven Design: coding/architecture/ddd.md
       - Intellij IDEA: coding/intellij-idea.md
       - Python:
           - coding/python/index.md
+          - Libraries:
+              - SQLAlchemy: coding/python/libraries/sqlalchemy.md
           - Data structures: coding/python/data-structures.md
 
 plugins:
