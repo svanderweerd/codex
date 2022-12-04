@@ -7,6 +7,7 @@ nav:
       - Fitness: health/fitness.md
   - DevOps:
       - devops/index.md
+      - Bash: devops/bash.md
       - Setup mkdocs:
           - Getting started: devops/setup-docs/getting-started.md
           - Tools & plugins: devops/setup-docs/tools-plugins.md
@@ -57,7 +58,11 @@ markdown_extensions:
   - pymdownx.smartsymbols
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
