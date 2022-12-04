@@ -31,3 +31,8 @@ The roadmap covers the following concepts:
 * Databases
 * Web
 * Architecture
+
+# References
+
+* [Hackers & Slackers](https://hackersandslackers.com/series/) provides alot of material related to Python. Examples
+  include: working with Excel, SQLAlchemy, GraphQL, Web Scraping, SQL native, and more.
