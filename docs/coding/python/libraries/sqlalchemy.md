@@ -74,7 +74,7 @@ that are derived from the baseclass. SA provides the `declarative_base()` functi
 it:
 
 ```python
-from sqlalchemy import declarative_base  # noqa
+from sqlalchemy import declarative_base
 
 Base = declarative_base()
 ```
@@ -126,8 +126,8 @@ to debug an object's value and receive nothing useful in return. See example bel
 
 ```python
 """models.py"""
-from sqlalchemy import declarative_base, Column, Integer, Text, String, DateTime  # noqa
-from sqlalchemy.sql import func  # noqa
+from sqlalchemy import declarative_base, Column, Integer, Text, String, DateTime
+from sqlalchemy.sql import func
 
 Base = declarative_base()
 
@@ -153,7 +153,7 @@ Luckily SA provides a method on your `declarative_base()` class that creates the
 
 ```python
 # continues from above
-Base.metadata.create_all(engine)  # noqa
+Base.metadata.create_all(engine)
 ```
 
 Once that runs, SQLAlchemy handles everything on the database side to create a table matching our model.
@@ -224,10 +224,136 @@ Working with session is as easy as four simple methods:
 * `session.commit()`: Changes made within a session are not saved until explicitly committed.
 * `session.close()`: Unlike SQLAlchemy engines, sessions are connections that remain open until explicitly closed.
 
+# Data relationships in SQLAlchemy
+
+To understand [relationships in SA](https://docs.sqlalchemy.org/en/14/orm/relationships.html), imagine that we build an
+app for blogging where we need three models:
+
+```python
+from sqlalchemy import declarative_base, Column, Integer, Text, String, DateTime, Boolean  # noqa
+from sqlalchemy.sql import func  # noqa
+
+
+class User():
+    """User account."""
+    __tablename__ = "user"
+
+    id = Column(Integer, primary_key=True, autoincrement="auto")
+    username = Column(String(255), unique=True, nullable=False)
+    password = Column(Text, nullable=False)
+    email = Column(String(255), unique=True, nullable=False)
+
+
+class Comment():
+    """User-generated comment on a blog post."""
+    __tablename__ = "comment"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer)
+    post_id = Column(Integer, index=True)
+    body = Column(Text)
+    upvotes = Column(Integer, default=1)
+    removed = Column(Boolean, default=False)
+    created_at = Column(DateTime, server_default=func.now())
+
+
+class Post():
+    """Blog post."""
+    __tablename__ = "post"
+
+    id = Column(Integer, primary_key=True, index=True)
+    author_id = Column(Integer)
+    slug = Column(String(255), nullable=False, unique=True)
+    title = Column(String(255), nullable=False)
+    summary = Column(String(400))
+    feature_image = Column(String(300))
+    body = Column(Text)
+    status = Column(String(255), nullable=False, default="unpublished")
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now())
+```
+
+## One-to-many
+
+One-to-many (or many-to-one) relationships are the most common type of database relationships. A timeless example of how
+such a relationship is applied is a business' relationship between _customers & orders_. Single customers have multiple
+orders, but orders don't have multiple customers, hence the term. Now, building on our Blog site, we can understand
+that authors might have multiple posts, and that posts might have multiple comments. These are two typical
+one-to-many relationships.
+
+We use the `relationship` function to provide a relationship between two mapped classes. Consider it some kind of
+"magic" attribute that will contain the values from other tables related to this one. We update our `Post` and
+`Comment` Models to implement the relationship accordingly:
+
+```python
+...
+
+
+class Comment():
+    """User-generated comment on a blog post."""
+    __tablename__ = "comment"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("user.id"))  # ---- (1.i) ----
+    post_id = Column(Integer, ForeignKey("post.id"), index=True)  # ---- (1.ii) ----
+    body = Column(Text)
+    upvotes = Column(Integer, default=1)
+    removed = Column(Boolean, default=False)
+    created_at = Column(DateTime, server_default=func.now())
+
+    # Relationships
+    user = relationship("User")  # ---- (2.i) ----
+
+
+class Post():
+    """Blog post."""
+    __tablename__ = "post"
+
+    id = Column(Integer, primary_key=True, index=True)
+    author_id = Column(Integer, ForeignKey("user.id"))  # ---- (1.iii) ----
+    slug = Column(String(255), nullable=False, unique=True)
+    title = Column(String(255), nullable=False)
+    summary = Column(String(400))
+    feature_image = Column(String(300))
+    body = Column(Text)
+    status = Column(String(255), nullable=False, default="unpublished")
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now())
+
+    # Relationships
+    author = relationship("User")  # ---- (2.ii) ----
+    comments = relationship("Comment")  # ---- (2.iii) ----
+```
+
+As shown above, we have added (1) `ForeignKey` and (2) `relationship()` to our models:
+
+1. We've set some attributes (i.e., columns) as Foreign Keys with `ForeignKey` property.We basically tie data
+    between our tables so that fetching one will allow us to get information about the other.
+    1. Our `comment` table has a foreign key `user.id` linked to its `user_id` attribute, indicating that the
+        commenter has a record in the `user` table.
+    2. This table also has a foreign key `post.id` linked to its `post_id` attribute, indicating that a comment
+        should have a relation to an existing post in the `post` table.
+    3. Lastly, we note that our `post` table has a foreign key `user.id` linked to its `author_id` attribute,
+        indicating a relation with the `user` table.
+2. The other new concept here is relationships. Relationships complement foreign keys and are a way of telling our
+   application (not our database) that we're building relationships between two `Models` (instead of db tables!).
+   1. In our `Comment` Model we define a relationship with the `User` model and assign it to `user`.
+   2. Similarly, in our `Post` Model we define a relationship between our `author` attribute and the `User` Model, and
+   3. We define a relationship between our `comments` atttribute and the `Comment` Model.
+
+!!! Info "On FKs and relationships()"
+
+    Foreign keys tell our _database_ which relationships we're building, and relationships tell our _app_ which
+    relationships we're building.
+
 # References
 
-Check out the following references that I've used to increase my understanding of SA:
+__General:__
 
 * [Databases in Python made easy with SQLAlchemy](https://hackersandslackers.com/python-database-management-sqlalchemy/)
   is a 4-part introduction to SQLAlchemy. It's from 2019, so some stuff might be outdated. Overall though, the
   tutorial helped me understand the syntax and workings of SA better.
+
+__Data relationships in SQLAlchemy:__
+
+* [Relationships Between SQLAlchemy Data Models](https://hackersandslackers.com/sqlalchemy-data-models)

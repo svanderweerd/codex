@@ -24,7 +24,7 @@ MD025: false
 # MD030/list-marker-space - Spaces after list markers
 MD030:
   ul_multi: 1
-  ol_multi: 2
+  ol_multi: 1
 
 # MD035/hr-style - Horizontal rule style
 MD035:
