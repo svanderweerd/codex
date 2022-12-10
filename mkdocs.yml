@@ -2,6 +2,8 @@ site_name: Yggdrasil
 
 nav:
   - Introduction: index.md
+  - Arts:
+      - Setup Mkdocs: arts/setup-mkdocs.md
   - Health:
       - Sleep: health/sleep.md
       - Fitness: health/fitness.md
