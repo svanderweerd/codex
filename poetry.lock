@@ -578,8 +578,8 @@ watchmedo = ["PyYAML (>=3.10)"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "70b5c81ad945d9409d48e1cdf9b66b27c9d972f74b671e6823495835fc4a1071"
+python-versions = "^3.11"
+content-hash = "7fe2842269eb68a22bf7856499c492acaf8e93e4f38ea6d7b06936e9e6936a9d"
 
 [metadata.files]
 Babel = [
