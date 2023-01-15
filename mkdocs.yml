@@ -1,4 +1,4 @@
-site_name: Yggdrasil
+site_name: Codex
 
 nav:
   - Introduction: index.md
@@ -17,11 +17,14 @@ nav:
       - Architecture:
           - Repository pattern: coding/architecture/repository-pattern.md
           - Domain Driven Design: coding/architecture/ddd.md
+          - Entity relationship modelling: coding/architecture/entity-relationship.md
       - Intellij IDEA: coding/intellij-idea.md
       - Python:
           - coding/python/index.md
           - Libraries:
               - SQLAlchemy: coding/python/libraries/sqlalchemy.md
+              - Pydantic: coding/python/libraries/pydantic.md
+              - Alembic: coding/python/libraries/alembic.md
           - Data structures: coding/python/data-structures.md
 
 plugins:
@@ -35,6 +38,7 @@ plugins:
   - encryptcontent:
       title_prefix: '[lock] '
       button_class: 'md-search__icon'
+  - tags
 
 markdown_extensions:
   - abbr
