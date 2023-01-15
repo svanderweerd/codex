@@ -21,6 +21,7 @@ nav:
       - Intellij IDEA: coding/intellij-idea.md
       - Python:
           - coding/python/index.md
+          - Python setup: coding/python/python-setup.md
           - Libraries:
               - SQLAlchemy: coding/python/libraries/sqlalchemy.md
               - Pydantic: coding/python/libraries/pydantic.md
