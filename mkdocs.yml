@@ -18,9 +18,11 @@ nav:
               - Python setup: coding/python/python-setup.md
               - Data structures: coding/python/data-structures.md
               - Libraries:
-                  - SQLAlchemy: coding/python/libraries/sqlalchemy.md
-                  - Pydantic: coding/python/libraries/pydantic.md
                   - Alembic: coding/python/libraries/alembic.md
+                  - Pydantic: coding/python/libraries/pydantic.md
+                  - SQLAlchemy: coding/python/libraries/sqlalchemy.md
+          - SQL:
+              coding/sql/index.md
       - Software Architecture:
         - Repository pattern: coding/architecture/repository-pattern.md
         - Domain Driven Design: coding/architecture/ddd.md
@@ -31,6 +33,7 @@ nav:
       Intellij IDEA: tooling/intellij-idea.md
   - DevOps:
       - devops/index.md
+      - devops/docker.md
 
 plugins:
   - search
@@ -83,10 +86,10 @@ markdown_extensions:
 theme:
   name: material
   features:
+    - content.code.annotate
     - navigation.instant
     - navigation.top
     - navigation.sections
-    - content.code.annotate
     - search.suggest
     - search.highlight
   palette:
