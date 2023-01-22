@@ -16,17 +16,25 @@ nav:
           - Python:
               - coding/python/index.md
               - Python setup: coding/python/python-setup.md
+              - Project templates:
+                  - Web apps: coding/python/project_templates/web_apps.md
               - Data structures: coding/python/data-structures.md
               - Libraries:
                   - Alembic: coding/python/libraries/alembic.md
+                  - FastAPI: coding/python/libraries/fastapi.md
                   - Pydantic: coding/python/libraries/pydantic.md
                   - SQLAlchemy: coding/python/libraries/sqlalchemy.md
+                  - Uvicorn: coding/python/libraries/uvicorn.md
           - SQL:
               coding/sql/index.md
       - Software Architecture:
         - Repository pattern: coding/architecture/repository-pattern.md
         - Domain Driven Design: coding/architecture/ddd.md
         - Entity relationship modelling: coding/architecture/entity-relationship.md
+  - MacOs:
+      - macos/index.md
+      - Libraries:
+          - Tree: macos/libraries/tree.md
   - Tooling:
       MkDocs: tooling/setup-mkdocs.md
       Bash: tooling/bash.md
@@ -53,6 +61,7 @@ markdown_extensions:
   - admonition
   - attr_list
   - meta
+  - md_in_html
   - def_list
   - toc:
       permalink: true
@@ -89,7 +98,6 @@ theme:
     - content.code.annotate
     - navigation.instant
     - navigation.top
-    - navigation.sections
     - search.suggest
     - search.highlight
   palette:
