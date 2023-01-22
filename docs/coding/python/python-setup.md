@@ -1,7 +1,3 @@
----
-title: Setting up Python
----
-
 This page describes the setup of Python on a Macbook.
 
 # Managing Python environments
@@ -49,10 +45,29 @@ the commands:
 
 # Dependency & Package management
 
-We have used several package managers (conda, pip, mamba, miniconda) but we are currently sticking with [Poetry]
-(<https://python-poetry.org>).
+There are a couple of things that we have tried in the past when we wanted to setup a package & environment manager
+for Python. For instance, we have tried conda, miniconda, mamba and poetry. Based on our experience with these
+services, I have decided to stick with [Poetry](https://www.python-poetry.org).
+A [Redditor](https://www.reddit.com/r/Python/comments/r6aqji/how_do_you_deploy_python_applications/) has the following
+to say about it:
+
+!!! note
+
+    For larger projects package building and containerisation are preferred. Most people suggest the use of poetry
+    and pyproject.toml (not setup.py, which is outdated) to build a package that is then uploaded to a private
+    package server. This package is then installed into a docker container, which can be deployed.
+
+    In general, Python applications should be packaged, as the use of packaging allows for richer metadata and more
+    robust handling of dependencies as well as the ability to install the package directly at a later date if need be.
+
+    No one has suggested the use of conda for deployment, which I was surprised by given its prevalence in the data
+    science community.
+
+Additionally, check out
+this [article](https://blogs.sap.com/2022/05/08/why-you-should-use-poetry-instead-of-pip-or-conda-for-python-projects/)
+on why you should use poetry over other package and dependency managers.
 
 ## Poetry & Pyenv
 
-If you are having trouble ensuring Poetry uses the correct Python version, check out [this](<https://github>.
-com/python-poetry/poetry/issues/5252) Github issue, which goes into more detail.
+If you are having trouble ensuring Poetry uses the correct Python version, check
+out [this](https://github.com/python-poetry/poetry/issues/5252) Github issue, which goes into more detail.

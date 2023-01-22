@@ -1,32 +1,33 @@
-site_name: Codex
+site_name: Codex Astrum
 
 nav:
   - Introduction: index.md
-  - Arts:
-      - Setup Mkdocs: arts/setup-mkdocs.md
   - Health:
       - Sleep: health/sleep.md
       - Fitness: health/fitness.md
+  - Coding:
+      - Coding basics:
+          - coding/basics/index.md
+          - Setup coding environment: coding/basics/setup-coding-env.md
+      - Languages:
+          - Python:
+              - coding/python/index.md
+              - Python setup: coding/python/python-setup.md
+              - Libraries:
+                  - SQLAlchemy: coding/python/libraries/sqlalchemy.md
+                  - Pydantic: coding/python/libraries/pydantic.md
+                  - Alembic: coding/python/libraries/alembic.md
+              - Data structures: coding/python/data-structures.md
+      - Software Architecture:
+        - Repository pattern: coding/architecture/repository-pattern.md
+        - Domain Driven Design: coding/architecture/ddd.md
+        - Entity relationship modelling: coding/architecture/entity-relationship.md
+  - Tooling:
+      MkDocs: tooling/setup-mkdocs.md
+      Bash: tooling/bash.md
+      Intellij IDEA: tooling/intellij-idea.md
   - DevOps:
       - devops/index.md
-      - Bash: devops/bash.md
-      - Setup mkdocs:
-          - Getting started: devops/setup-docs/getting-started.md
-          - Tools & plugins: devops/setup-docs/tools-plugins.md
-  - Coding:
-      - Architecture:
-          - Repository pattern: coding/architecture/repository-pattern.md
-          - Domain Driven Design: coding/architecture/ddd.md
-          - Entity relationship modelling: coding/architecture/entity-relationship.md
-      - Intellij IDEA: coding/intellij-idea.md
-      - Python:
-          - coding/python/index.md
-          - Python setup: coding/python/python-setup.md
-          - Libraries:
-              - SQLAlchemy: coding/python/libraries/sqlalchemy.md
-              - Pydantic: coding/python/libraries/pydantic.md
-              - Alembic: coding/python/libraries/alembic.md
-          - Data structures: coding/python/data-structures.md
 
 plugins:
   - search
@@ -91,7 +92,7 @@ theme:
       primary: blue grey
       accent: light blue
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/weather-night
         name: Switch to dark mode
     # dark mode
     - media: '(prefers-color-scheme: dark)'
@@ -99,5 +100,5 @@ theme:
       primary: blue grey
       accent: light blue
       toggle:
-        icon: material/toggle-switch
+        icon: material/weather-sunny
         name: Switch to light mode

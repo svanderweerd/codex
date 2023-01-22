@@ -330,4 +330,6 @@ See the links below for guides and other docs that helped me understand Mkdocs a
 
 * [Creating a documentation site with mkdocs](https://blog.elmah.io/creating-a-documentation-site-with-mkdocs/)
 * [Hosting a MkDocs-driven documentation site on GitHub Pages](https://blog.elmah.io/hosting-a-mkdocs-driven-documentation-site-on-github-pages/)
+* [Mkdocs plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
+* [Best of MKDocs](https://github.com/pawamoy/best-of-mkdocs)
 * [Deploying a Mkdocs site with Github Actions](https://blog.elmah.io/deploying-a-mkdocs-documentation-site-with-github-actions/)

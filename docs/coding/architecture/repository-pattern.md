@@ -1,9 +1,3 @@
----
-title: Repository pattern
-author: svanderweerd
-tags: [db]
----
-
 This section draws heavily from [Martin Fowler's](https://martinfowler.com/eaaCatalog) Patterns of Enterprise
 Architecture Applications, and _Domain Driven Design_.
 
