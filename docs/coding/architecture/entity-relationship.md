@@ -1,8 +1,3 @@
----
-title: Entity Relationship Modelling
-tags: [db]
----
-
 This post will cover my understanding on entity relationship modelling. There are several types of entity relations:
 
 * one-to-many: a _Customer_ can have several _Orders_ whereas an Order can't have several Customers.

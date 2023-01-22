@@ -1,8 +1,3 @@
----
-title: SQLAlchemy
-tags: [db]
----
-
 [SQLAlchemy](https://docs.sqlalchemy.org/en/14/) is an ORM built with Domain Driven Design in
 mind [post](https://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/). It can be used to perform ad
 hoc querying on your database (db), but also used as an ORM for larger applications. SA has 2 components: **Core**
@@ -482,4 +477,4 @@ In our `get_all_posts` function, we:
 
 * [Hackers & Slackers](https://hackersandslackers.com/python-database-management-sqlalchemy)
 
-  **Data relationships in SQLAlchemy:**
+**Data relationships in SQLAlchemy:**
