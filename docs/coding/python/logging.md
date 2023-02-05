@@ -57,6 +57,29 @@ logger = get_logger(__name__)
 logger.error(msg="this is an error message from logger_2!")
 ```
 
+You could add a `lru_cache` decorator on top of your `get_logger` function, to increase performance. See code sample
+below from one of my apps (which uses `Rich` package as well):
+
+```python
+import logging
+from functools import lru_cache
+
+from rich.console import Console
+from rich.logging import RichHandler
+
+console = Console(color_system="256", width=180, style="blue")
+
+
+@lru_cache
+def get_logger(module_name):
+    logger = logging.getLogger(module_name)
+    handler = RichHandler(rich_tracebacks=True, console=console, tracebacks_show_locals=True)
+    handler.setFormatter(logging.Formatter("[ %(threadName)s:%(funcName)s:%(pathname)s:%(lineno)d ] - " "%(message)s"))
+    logger.addHandler(handler)
+    logger.setLevel(logging.DEBUG)
+    return logger
+```
+
 # Single object
 
 This option is more suited when:
