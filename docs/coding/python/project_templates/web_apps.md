@@ -87,7 +87,7 @@ USER "app-user"
 
 ## db service
 
-Separate [postgres](sql.md) container that executes a SQL file called `initdb`. See below for file.
+Separate [postgres](pg.md) container that executes a SQL file called `initdb`. See below for file.
 
 ```dockerfile
 # pull base image
