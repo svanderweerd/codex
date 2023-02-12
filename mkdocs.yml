@@ -1,5 +1,6 @@
 site_name: Codex Astrum
 
+# TODO: implement https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin for better nav
 nav:
   - Introduction: index.md
   - Health:
@@ -27,11 +28,11 @@ nav:
                   - SQLAlchemy: coding/python/libraries/sqlalchemy.md
                   - Uvicorn: coding/python/libraries/uvicorn.md
           - SQL:
-              coding/sql/index.md
+              - Postgres: coding/sql/pg.md
       - Software Architecture:
-        - Repository pattern: coding/architecture/repository-pattern.md
-        - Domain Driven Design: coding/architecture/ddd.md
-        - Entity relationship modelling: coding/architecture/entity-relationship.md
+          - Repository pattern: coding/architecture/repository-pattern.md
+          - Domain Driven Design: coding/architecture/ddd.md
+          - Entity relationship modelling: coding/architecture/entity-relationship.md
   - MacOs:
       - macos/index.md
       - Libraries:
@@ -95,6 +96,8 @@ markdown_extensions:
 
 theme:
   name: material
+  font: # remove if you want default (Roboto Mono)
+    text: Montserrat
   features:
     - content.code.annotate
     - navigation.instant
