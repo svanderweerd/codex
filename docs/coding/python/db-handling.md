@@ -64,32 +64,3 @@ connection pool by default. To optimize the code, you can keep the connection op
 reuse it for multiple operations.
 
 To implement this, we can update the `get_session()` function as shown in the code block below.
-
-!!! warning
-
-   The code block below is provided by chatGPT and untested. Please be cautious and validate the appropriateness!
-
-```python
-async def get_session():
-    async with engine.acquire() as conn:
-        async with conn.begin() as trans:
-            session = await async_session_factory.create_session(bind=conn, autoflush=False, expire_on_commit=False)
-            try:
-                logger.debug(f"ASYNC Pool: {engine.pool.status()}")
-                yield session
-            except SQLAlchemyError as sql_e:
-                await session.rollback()
-                raise sql_e
-            except HTTPException as http_e:
-                await session.rollback()
-                raise http_e
-            else:
-                await session.commit()
-            finally:
-                await session.close()
-```
-
-This code uses the `acquire` method from the engine to get a connection from the connection pool and uses the `begin`
-method from the connection to start a transaction. The transaction is then passed to the session factory, which
-creates a session bound to the connection and transaction. This session can then be used for multiple database
-operations within the same request. The connection and transaction are closed automatically when the session is closed.
