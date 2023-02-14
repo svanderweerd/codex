@@ -21,6 +21,7 @@ nav:
                   - Web apps: coding/python/project_templates/web_apps.md
               - Data structures: coding/python/data-structures.md
               - Logging: coding/python/logging.md
+              - DB handling: coding/python/db-handling.md
               - Libraries:
                   - Alembic: coding/python/libraries/alembic.md
                   - FastAPI: coding/python/libraries/fastapi.md
