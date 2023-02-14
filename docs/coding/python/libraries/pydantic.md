@@ -1,6 +1,10 @@
 Pydantic is a Python library for data validation and settings management using Python type annotations.
 
-# Settings Management & Environment variables
+# Settings & Environment variables
+
+Pydantic offers a great way of managing your application settings and any environment vars, through the use of the
+`BaseSettings` class. For a in-depth description, check out [this](https://fastapi.tiangolo.com/advanced/settings/)
+chapter in the FastAPI docs.
 
 ## Settings class
 
