@@ -53,14 +53,24 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:  # (1)
 5. In the `else` block, it commits the session if no exceptions have been raised.
 6. Finally, in the `finally` block, it closes the session.
 
-## Reuse database connections
+# Synchronous vs Asynchronous db connections
 
-Now, you might consider using connection pooling to reuse database connections, instead of creating a new connection
-for each session. This can help improve the performance of your application, especially if you have a high volume of
-database queries.
+In SQLAlchemy ORM, a `session` is a way of accessing the database and running database operations (such as querying,
+updating, or deleting data). A session acts as a bridge between your application and the database.
 
-To allow reusing database connections, you can use connection pooling. SQLAlchemy's async support provides an async
-connection pool by default. To optimize the code, you can keep the connection open for the duration of the request and
-reuse it for multiple operations.
+A synchronous session is a session that blocks your application's main thread while it's waiting for a database
+operation to complete. This means that while your application is waiting for the database operation to complete, it
+cannot perform any other operations or respond to any user requests. This can cause your application to become
+unresponsive or slow.
 
-To implement this, we can update the `get_session()` function as shown in the code block below.
+An asynchronous session, on the other hand, does not block the main thread of your application. Instead, it runs the
+database operation in a separate thread, allowing your application to continue processing other tasks while the database
+operation is being performed. This can make your application more responsive and faster, especially when running slow
+database operations.
+
+When choosing between a synchronous session and an asynchronous session, you should consider the specific needs of your
+application. If you have an application that requires fast response times and does not perform many database operations,
+a synchronous session may be sufficient. However, if your application performs many database operations or if some of
+those operations are slow, an asynchronous session may be a better choice. This is because an asynchronous session can
+continue processing other tasks while a database operation is being performed, which can result in a more responsive and
+faster application.
