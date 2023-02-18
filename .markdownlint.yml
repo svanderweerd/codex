@@ -30,8 +30,11 @@ MD030:
 MD035:
   style: ---
 
+# MD040/fenced-code-language
+MD040: False
+
 # MD035/hr-style - First line should be top-level heading style
 MD041: False
 
 # MD046/code-block-style - Code block style
-MD046: false
+MD046: False
