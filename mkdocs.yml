@@ -39,9 +39,10 @@ nav:
       - Libraries:
           - Tree: macos/libraries/tree.md
   - Tooling:
-      MkDocs: tooling/setup-mkdocs.md
-      Bash: tooling/bash.md
-      Intellij IDEA: tooling/intellij-idea.md
+      - MkDocs: tooling/setup-mkdocs.md
+      - Bash: tooling/bash.md
+      - Git: tooling/git.md
+      - Intellij IDEA: tooling/intellij-idea.md
   - DevOps:
       - devops/index.md
       - devops/docker.md
