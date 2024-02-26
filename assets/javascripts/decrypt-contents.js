@@ -1,15 +1,5 @@
 /* encryptcontent/decrypt-contents.tpl.js */
 
-/* Strips the padding character from decrypted content. */
-function strip_padding(padded_content, padding_char) {
-    for (var i = padded_content.length; i > 0; i--) {
-        if (padded_content[i - 1] !== padding_char) {
-            return padded_content.slice(0, i);
-        }
-    }
-    return '';
-};
-
 /* Decrypts the content from the ciphertext bundle. */
 function decrypt_content(password, iv_b64, ciphertext_b64, padding_char) {
     var key = CryptoJS.MD5(password),
@@ -22,10 +12,10 @@ function decrypt_content(password, iv_b64, ciphertext_b64, padding_char) {
         };
     var plaintext = CryptoJS.AES.decrypt(bundle, key, {
         iv: iv,
-        padding: CryptoJS.pad.NoPadding
+        padding: CryptoJS.pad.Pkcs7
     });
     try {
-        return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+        return plaintext.toString(CryptoJS.enc.Utf8)
     } catch (err) {
         // encoding failed; wrong password
         return false;
@@ -56,7 +46,12 @@ function reload_js(src) {
         if (script_tag) {
             script_tag.remove();
             new_script_tag = document.createElement('script');
-            new_script_tag.innerHTML = script_tag.innerHTML;
+            if (script_tag.innerHTML) {
+                new_script_tag.innerHTML = script_tag.innerHTML;
+            }
+            if (script_tag.src) {
+                new_script_tag.src = script_tag.src;
+            }
             head.appendChild(new_script_tag);
         }
     } else {
@@ -141,7 +136,7 @@ function decryptor_reaction(content_decrypted, password_input, fallback_used, se
         if (!fallback_used || set_global) {
             // create HTML element for the inform message
             let mkdocs_decrypt_msg = document.getElementById('mkdocs-decrypt-msg');
-            mkdocs_decrypt_msg.textContent = 'Invalid password.';
+            mkdocs_decrypt_msg.textContent = decryption_failure_message;
             
         }
         password_input.value = '';
@@ -153,7 +148,9 @@ function decryptor_reaction(content_decrypted, password_input, fallback_used, se
 function init_decryptor() {
     var password_input = document.getElementById('mkdocs-content-password');
     // adjust password field width to placeholder length
-    password_input.setAttribute('size', password_input.getAttribute('placeholder').length);
+    if (password_input.hasAttribute('placeholder')) {
+        password_input.setAttribute('size', password_input.getAttribute('placeholder').length);
+    }
     var encrypted_content = document.getElementById('mkdocs-encrypted-content');
     var decrypted_content = document.getElementById('mkdocs-decrypted-content');
     
