@@ -4,10 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["svanderweerd"]
 license = "MIT"
-readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 mkdocs = "^1.4.2"
 mkdocs-material = "^8.5.10"
 mkdocs-section-index = "^0.3.4"
@@ -18,6 +17,7 @@ pymdown-extensions = "^9.9"
 pre-commit = "^2.20.0"
 mkdocs-encryptcontent-plugin = "^2.4.1"
 proselint = "^0.13.0"
+ruff = "^0.2.2"
 
 
 [build-system]
